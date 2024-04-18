@@ -1,0 +1,23 @@
+INPUT:
+  SIZE: (96, 96)
+  TRANSFORMS: ["random_flip", "random_translation", "normalize"]
+
+DATASET:
+  NAME: "DomainNet"
+  SOURCE_DOMAINS: ["clipart"] 
+  # SOURCE_DOMAINS: ["infograph"]
+  # SOURCE_DOMAINS: ["painting"]
+  # SOURCE_DOMAINS: ["quickdraw"]
+  # SOURCE_DOMAINS: ["real"]
+  # SOURCE_DOMAINS: ["sketch"]
+
+  # TARGET_DOMAINS: ["clipart"]
+  # TARGET_DOMAINS: ["infograph"]
+  # TARGET_DOMAINS: ["painting"]
+  # TARGET_DOMAINS: ["quickdraw"]
+  # TARGET_DOMAINS: ["real"]
+  TARGET_DOMAINS: ["sketch"]
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"

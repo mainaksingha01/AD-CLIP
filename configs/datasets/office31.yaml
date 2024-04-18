@@ -1,0 +1,18 @@
+INPUT:
+  SIZE: (224, 224)
+  TRANSFORMS: ["random_flip", "center_crop", "normalize"]
+
+DATASET:
+  NAME: "Office31"
+  SOURCE_DOMAINS: ["amazon"]
+  # SOURCE_DOMAINS: ["dslr"]
+  # SOURCE_DOMAINS: ["webcam"]
+
+  TARGET_DOMAINS: ["amazon"]
+  # TARGET_DOMAINS: ["dslr"]
+  # TARGET_DOMAINS: ["webcam"]
+# you can modify the code to explore four domains
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"
