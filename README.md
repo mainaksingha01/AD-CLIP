@@ -15,7 +15,7 @@ Although deep learning models have shown impressive performance on supervised le
 
 ![architecture](https://github.com/mainaksingha01/AD-CLIP/blob/master/images/architecture.png)
 
-Also clone this repository [dassl](https://github.com/KaiyangZhou/Dassl.pytorch/tree/master/dassl) files.
+Also clone the [dassl](https://github.com/KaiyangZhou/Dassl.pytorch/tree/master/dassl) files.
 
 ## Bibtex
 
