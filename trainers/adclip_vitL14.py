@@ -96,8 +96,8 @@ class image_projector(nn.Module):
 class style_mapping_projector(nn.Module):
     def __init__(self):
         super().__init__()
-        self.linear1 = nn.ModuleList(nn.Linear(1024,256) for _ in range (24))
-        self.linear2 = nn.ModuleList(nn.Linear(256,768) for _ in range (24))
+        self.linear1 = nn.ModuleList(nn.Linear(1024,640) for _ in range (24))
+        self.linear2 = nn.ModuleList(nn.Linear(640,768) for _ in range (24))
         self.adain=AdaIN()
         self.relu = nn.ReLU()
         self.gap=nn.AdaptiveAvgPool1d((1024))
