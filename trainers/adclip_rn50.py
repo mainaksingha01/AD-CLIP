@@ -114,10 +114,10 @@ class style_mapping_projector(nn.Module):
     def __init__(self):
         super().__init__()
         self.linear1 = []
-        self.linear1.append(nn.Linear(256,128).to(device_cuda))
-        self.linear1.append(nn.Linear(512,128).to(device_cuda))
-        self.linear1.append(nn.Linear(1024,128).to(device_cuda))
-        self.linear1.append(nn.Linear(2048,128).to(device_cuda))
+        self.linear1.append(nn.Linear(256,384).to(device_cuda))
+        self.linear1.append(nn.Linear(512,384).to(device_cuda))
+        self.linear1.append(nn.Linear(1024,384).to(device_cuda))
+        self.linear1.append(nn.Linear(2048,384).to(device_cuda))
         self.adain=AdaIN()
         self.relu = nn.ReLU()
         self.gap = []
@@ -125,7 +125,7 @@ class style_mapping_projector(nn.Module):
         self.gap.append(nn.AdaptiveAvgPool1d((512)))
         self.gap.append(nn.AdaptiveAvgPool1d((1024)))
         self.gap.append(nn.AdaptiveAvgPool1d((2048)))
-        self.linear2 = nn.ModuleList(nn.Linear(128,512) for _ in range (4))
+        self.linear2 = nn.ModuleList(nn.Linear(384,512) for _ in range (4))
     def forward(self, data):
         data_prompt=[]
         for i in range(len(data)):
