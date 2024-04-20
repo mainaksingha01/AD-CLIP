@@ -1,0 +1,19 @@
+INPUT:
+  SIZE: (96, 96)
+  TRANSFORMS: ["random_flip", "random_translation", "normalize"]
+
+DATASET:
+  NAME: "miniDomainNet"
+  # SOURCE_DOMAINS: ["clipart"]
+  # SOURCE_DOMAINS: ["painting"]
+  # SOURCE_DOMAINS: ["real"]
+  SOURCE_DOMAINS: ["sketch"]
+
+  # TARGET_DOMAINS: ["clipart"]
+  TARGET_DOMAINS: ["painting"]
+  # TARGET_DOMAINS: ["real"]
+  # TARGET_DOMAINS: ["sketch"]
+
+MODEL:
+  BACKBONE:
+    NAME: "ViT-B/16"
