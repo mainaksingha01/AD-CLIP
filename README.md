@@ -7,13 +7,13 @@ Official repository of AD-CLIP, which is focused on domain adaptation using *pro
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-brightgreen)](https://arxiv.org/pdf/2308.05659.pdf)
 
 ## Abstract
-<img src="https://github.com/mainaksingha01/AD-CLIP/blob/master/images/teaser2.png" width="600">
+<img src="https://github.com/mainaksingha01/AD-CLIP/blob/master/images/teaser2.png" width="1000">
 
 Although deep learning models have shown impressive performance on supervised learning tasks, they often struggle to generalize well when the training (source) and test (target) domains differ. Unsupervised domain adaptation (DA) has emerged as a popular solution to this problem. However, current DA techniques rely on visual backbones, which may lack semantic richness. Despite the potential of large-scale vision-language foundation models like CLIP, their effectiveness for DA has yet to be fully explored. To address this gap, we introduce AD-CLIP, a domain-agnostic prompt learning strategy for CLIP that aims to solve the DA problem in the prompt space. We leverage the frozen vision backbone of CLIP to extract both image style (domain) and content information, which we apply to learn prompt tokens. Our prompts are designed to be domain-invariant and class-generalizable, by conditioning prompt learning on image style and content features simultaneously. We use standard supervised contrastive learning in the source domain, while proposing an entropy minimization strategy to align domains in the embedding space given the target domain data. We also consider a scenario where only target domain samples are available during testing, without any source domain data, and propose a cross-domain style mapping network to hallucinate domain-agnostic tokens. Our extensive experiments on three benchmark DA datasets demonstrate the effectiveness of AD-CLIP compared to existing literature.
 
 ## Architecture
 
-<img src="https://github.com/mainaksingha01/AD-CLIP/blob/master/images/architecture.png" width="1000">
+<img src="https://github.com/mainaksingha01/AD-CLIP/blob/master/images/architecture.png" width="800">
 
 ## Code
 
