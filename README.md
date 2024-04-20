@@ -23,6 +23,7 @@ Although deep learning models have shown impressive performance on supervised le
  - In line 464 of dassl.engine.trainer file, replace the output by the returns of the CustomCLIP class of the trainers (e.g. adclip_vitB16) file for evaluation. 
  - `scripts` folder holds the scripts of for training and testing.
  - Put data path in main.sh and eval.sh
+ - Choose the source and target domains from configs.datasets files.
 
 ```shell (for example)
 $ cd scripts
