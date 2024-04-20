@@ -19,10 +19,10 @@ Although deep learning models have shown impressive performance on supervised le
 
  - `datasets` folder contains the dataloader files of each datasets.
  - `trainers` folder contains the code of our model in three variants ResNet50, ViT-B/16 and ViT-L/14.
- - Clone the awesome toolbox of [`dassl`](https://github.com/KaiyangZhou/Dassl.pytorch/tree/master/dassl) inside this repo.
+ - Clone the awesome toolbox of [dassl](https://github.com/KaiyangZhou/Dassl.pytorch/tree/master/dassl) inside this repo.
  - In line 464 of `dassl.engine.trainer` file, replace the output by the returns of the `CustomCLIP` class of the trainers (e.g. adclip_vitB16) file for evaluation. 
  - `scripts` folder holds the scripts of for training and testing.
- - Put data path in `main.sh` and `eval.sh`
+ - Put data path in `main.sh` and `eval.sh`.
  - Choose the source and target domains from `configs.datasets` files.
 
 ```shell (for example)
