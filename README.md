@@ -27,6 +27,7 @@ Although deep learning models have shown impressive performance on supervised le
 $ cd scripts
 $ bash main.sh officehome ADCLIPB16 vitB16
 $ bash eval.sh officehome ADCLIPB16 vitB16
+```
 
 ## Bibtex
 
