@@ -5,22 +5,14 @@ import os
 from dassl.utils import setup_logger, set_random_seed, collect_env_info
 from dassl.config import get_cfg_default
 from dassl.engine import build_trainer
-# from torch.cuda import init
 
-# custom
 from dassl.data.datasets import VisDA17
 from dassl.data.datasets import OfficeHome
-from dassl.data.datasets import PACS 
+from dassl.data.datasets import miniDomainNet
 
-#import trainers.dapl
-# import trainers.daclip_vitb16_new 
-# import trainers.daclip_vitL14_new 
-# import trainers.new_b16_rn50
-# import trainers.daclip_student_L14_rn50
-# import trainers.zsclip
-#import trainers.clipft
-
-import trainers.adclip
+import trainers.adclip_rn50
+import trainers.adclip_vitB16
+import trainers.adclip_vitL14
 
 
 def print_args(args, cfg):
@@ -84,41 +76,15 @@ def extend_cfg(cfg):
 
     cfg.MODEL.BACKBONE.PATH = "./assets"
 
-    cfg.TRAINER.DAPL = CN()
-    cfg.TRAINER.DAPL.N_DMX = 16  # number of DSC tokens
-    cfg.TRAINER.DAPL.N_CTX = 16  # number of context vectors
-    cfg.TRAINER.DAPL.CSC = False  # class-specific context
-    cfg.TRAINER.DAPL.PREC = "fp16"  # fp16, fp32, amp
-    cfg.TRAINER.DAPL.T = 1.0
-    cfg.TRAINER.DAPL.TAU = 0.5
-    cfg.TRAINER.DAPL.U = 1.0
 
+    cfg.TRAINER.ADCLIPRN50 = CN()
+    cfg.TRAINER.ADCLIPRN50.PREC = "amp"  # fp16, fp32, amp
 
-    cfg.TRAINER.ADCLIP = CN()
-    cfg.TRAINER.ADCLIP.N_DMX = 16  # number of DSC tokens
-    cfg.TRAINER.ADCLIP.N_CTX = 4  # number of context vectors
-    cfg.TRAINER.ADCLIP.CTX_INIT = ""  # initialization words
-    cfg.TRAINER.ADCLIP.CSC = False  # class-specific context
-    cfg.TRAINER.ADCLIP.PREC = "fp16"  # fp16, fp32, amp
-    #cfg.TRAINER.ADCLIP.T = 1.0
-    #cfg.TRAINER.ADCLIP.TAU = 0.5
-    cfg.TRAINER.ADCLIP.U = 1.0
-    # cfg.DATALOADER.TRAIN_X.SAMPLER = "RandomSampler"
-    # cfg.DATALOADER.TRAIN_U.SAMPLER = "RandomSampler"
+    cfg.TRAINER.ADCLIPB16 = CN()
+    cfg.TRAINER.ADCLIPB16.PREC = "amp"  # fp16, fp32, amp
 
-    cfg.TRAINER.DACLIP = CN()
-    cfg.TRAINER.DACLIP.N_DMX = 16  # number of DSC tokens
-    cfg.TRAINER.DACLIP.N_CTX = 4  # number of context vectors
-    cfg.TRAINER.DACLIP.CTX_INIT = ""  # initialization words
-    cfg.TRAINER.DACLIP.CSC = False  # class-specific context
-    cfg.TRAINER.DACLIP.PREC = "fp16"  # fp16, fp32, amp
-    #cfg.TRAINER.DACLIP.T = 1.0
-    #cfg.TRAINER.DACLIP.TAU = 0.5
-    cfg.TRAINER.DACLIP.U = 1.0
-
-    # cfg.LOSS = CN()
-    # cfg.LOSS.GM = False
-    # cfg.LOSS.NAME = "clipft"
+    cfg.TRAINER.ADCLIPL14 = CN()
+    cfg.TRAINER.ADCLIPL14.PREC = "amp"  # fp16, fp32, amp
 
 
 def setup_cfg(args):
