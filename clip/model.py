@@ -2,7 +2,6 @@ from collections import OrderedDict
 from typing import Tuple, Union
 
 import numpy as np
-import pandas as pd
 import torch
 import torch.nn.functional as F
 from torch import nn
@@ -145,18 +144,17 @@ class ModifiedResNet(nn.Module):
 
         x = x.type(self.conv1.weight.dtype)
         x = stem(x)
-        # x = self.layer1(x)
-        # x = self.layer2(x)
-        # x = self.layer3(x)
-        # x = self.layer4(x)
-        # x = self.attnpool(x)
+        data = []
         x1 = self.layer1(x)
+        data.append(x1)
         x2 = self.layer2(x1)
+        data.append(x2)
         x3 = self.layer3(x2)
+        data.append(x3)
         x4 = self.layer4(x3)
-        x5 = self.attnpool(x4)
-
-        return x5, x4, x3, x2, x1
+        data.append(x4)
+        feat = self.attnpool(x4)
+        return feat, data
 
 
 class LayerNorm(nn.LayerNorm):
@@ -187,9 +185,7 @@ class ResidualAttentionBlock(nn.Module):
         self.ln_2 = LayerNorm(d_model)
         self.attn_mask = attn_mask
 
-    def attention(self, x: torch.Tensor):
-        # print(x.dtype)
-        # exit()        
+    def attention(self, x: torch.Tensor):       
         self.attn_mask = self.attn_mask.to(dtype=x.dtype, device=x.device) if self.attn_mask is not None else None
         y = self.attn(x, x, x, need_weights=False, attn_mask=self.attn_mask)[0]
         return y
@@ -215,7 +211,7 @@ class Transformer(nn.Module):
         data = torch.stack(data)
         return x, data
 
-#df = pd.DataFrame()
+
 class VisionTransformer(nn.Module):
     def __init__(self, input_resolution: int, patch_size: int, width: int, layers: int, heads: int, output_dim: int):
         super().__init__()
@@ -234,7 +230,6 @@ class VisionTransformer(nn.Module):
         self.proj = nn.Parameter(scale * torch.randn(width, output_dim))
 
     def forward(self, x: torch.Tensor):
-        #global df
         x = self.conv1(x)  # shape = [*, width, grid, grid]
         x = x.reshape(x.shape[0], x.shape[1], -1)  # shape = [*, width, grid ** 2]
         x = x.permute(0, 2, 1)  # shape = [*, grid ** 2, width]
@@ -250,19 +245,9 @@ class VisionTransformer(nn.Module):
 
         if self.proj is not None:
             x = x @ self.proj
-        # t = x.cpu().detach().numpy()
-        # df1 = pd.DataFrame(t)
-        # # df = np.vstack((t))
-        # # # df2 = pd.DataFrame()
-        # df = df.append(df1, ignore_index=True)
-        # # # #df.loc[len(df)] = bias      
-        # #df.to_csv('/home/sayanr/Desktop/Mainak/Paper/csv/clip_patternnet2.csv', header=False, index=False) 
-        # # print(df)
-        # print(df.shape) 
         return x, data
 
 
-#df = pd.DataFrame()
 class CLIP(nn.Module):
     def __init__(self,
                  embed_dim: int,
@@ -379,14 +364,8 @@ class CLIP(nn.Module):
         return x
 
     def forward(self, image, text):
-        # global df
         image_features = self.encode_image(image)
         text_features = self.encode_text(text)
-        # t = text_features.cpu().detach().numpy()
-        # df1 = pd.DataFrame(t)
-        # df = df.append(df1, ignore_index=True)     
-        # df.to_csv('/home/sayanr/Desktop/Mainak/Paper/csv/clip_text_patternnet.csv', header=False, index=False) 
-        # print(df.shape) 
 
         # normalized features
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
