@@ -1,1 +1,0 @@
-from .adclip import ADCLIP
