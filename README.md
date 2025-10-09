@@ -16,6 +16,17 @@ Although deep learning models have shown impressive performance on supervised le
 
 <img src="https://github.com/mainaksingha01/AD-CLIP/blob/master/images/architecture.png" width="800">
 
+## How to install
+
+### Create your environment:
+
+```bash
+$ conda create -n adclip python=3.8
+$ conda activate adclip
+$ conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=10.2 -c pytorch
+$ pip install -r requirements.txt
+```
+
 ## Code
 
  - `datasets` folder contains the dataloader files of each datasets.
