@@ -5,6 +5,7 @@ Official repository of AD-CLIP, which is focused on domain adaptation using *pro
 
 [![paper](https://img.shields.io/badge/Conference-Paper-blue)](https://openaccess.thecvf.com/content/ICCV2023W/OODCV/papers/Singha_AD-CLIP_Adapting_Domains_in_Prompt_Space_Using_CLIP_ICCVW_2023_paper.pdf)
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-brightgreen)](https://arxiv.org/pdf/2308.05659.pdf)
+[![poster](https://img.shields.io/badge/Poster-yellow)](https://github.com/mainaksingha01/AD-CLIP/blob/master/docs/AD-CLIP_poster.pdf)
 
 ## Abstract
 <img src="https://github.com/mainaksingha01/AD-CLIP/blob/master/images/teaser2.png" width="1000">
